@@ -71,7 +71,7 @@ $btnGenerarDocumento.onclick = () => {
     window.open("documento.html");
 };
 // Lo demás tiene que ver con pintar sobre el canvas en los eventos del mouse
-$canvas.addEventListener("pointerdown", evento => {
+$canvas.addEventListener("mousedown", evento => {
     // En este evento solo se ha iniciado el clic, así que dibujamos un punto
     xAnterior = xActual;
     yAnterior = yActual;
@@ -85,7 +85,7 @@ $canvas.addEventListener("pointerdown", evento => {
     haComenzadoDibujo = true;
 });
 
-$canvas.addEventListener("pointermove", (evento) => {
+$canvas.addEventListener("mousemove", (evento) => {
     if (!haComenzadoDibujo) {
         return;
     }
@@ -103,7 +103,7 @@ $canvas.addEventListener("pointermove", (evento) => {
     contexto.stroke();
     contexto.closePath();
 });
-["pointerup", "pointerout"].forEach(nombreDeEvento => {
+["mouseup", "mouseout"].forEach(nombreDeEvento => {
     $canvas.addEventListener(nombreDeEvento, () => {
         haComenzadoDibujo = false;
     });
